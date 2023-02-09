@@ -1,17 +1,21 @@
 import { ExpoConfig, ConfigContext } from "expo/config";
 import * as dotenv from "dotenv";
 
-console.log("process.env.APP_ENV", process.env.APP_ENV);
 dotenv.config({
   path: process.env.APP_ENV ? `.${process.env.APP_ENV}` : "" + `.env`,
 });
 
 export default ({ config }: ConfigContext): ExpoConfig => {
-  console.log("process.env.APP_MODE", process.env.APP_MODE);
+  // console.log("process.env.APP_MODE", process.env.APP_MODE);
   return {
     ...config,
     name: "vic-rn-app",
     slug: "vic-rn-app",
+    extra: {
+      eas: {
+        projectId: "bd991b05-8694-40ff-a2ab-cc52b1ee6193",
+      },
+    },
     owner: "vicwang",
     version: "1.0.0",
     orientation: "portrait",

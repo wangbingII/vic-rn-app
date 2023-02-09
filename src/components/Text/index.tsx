@@ -1,25 +1,22 @@
 import React from "react";
 import { ITextProps, Text as NBText } from "native-base";
+import { ThemeColors } from "../Theme";
 
-export const Text: React.FC<ITextProps> = (props) => {
+type TextProps = ITextProps & {
+  color?: ThemeColors;
+  bg?: ThemeColors;
+};
+
+export const Text: React.FC<TextProps> = (props) => {
   return (
     <NBText
       textBreakStrategy="simple"
       numberOfLines={0}
       fontSize={"xs"}
-      color={"text-default"}
+      color={"red"}
       {...props}
     >
       {props.children}
     </NBText>
-  );
-};
-
-export const ErrorText: React.FC<ITextProps> = (props) => {
-  const { children, ...otherProps } = props;
-  return (
-    <Text fontSize={"xs"} pt={2} color={"text-critical"} {...otherProps}>
-      {children}
-    </Text>
   );
 };
